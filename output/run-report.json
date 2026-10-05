@@ -1,13 +1,13 @@
 {
-  "started_at": "2026-10-02T07:22:06.482Z",
-  "finished_at": "2026-10-02T07:22:06.740Z",
-  "duration_ms": 258,
+  "started_at": "2026-10-05T07:18:14.624Z",
+  "finished_at": "2026-10-05T07:18:16.892Z",
+  "duration_ms": 2268,
   "catalogue_pages_fetched": 3,
   "book_pages_discovered": 60,
-  "book_pages_visited": 60,
+  "book_pages_visited": 61,
   "cache_hits": 60,
   "fresh_fetches": 0,
   "valid_records": 60,
-  "invalid_records": 0,
-  "failed_pages": 0
+  "invalid_records": 1,
+  "failed_pages": 1
 }
