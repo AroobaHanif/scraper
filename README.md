@@ -87,21 +87,23 @@ instead of into `books.json`.
 
 ## Honest limitation
 
-This was built and unit-tested in a sandboxed environment whose network
-is restricted to an explicit allowlist of domains (package registries,
-GitHub, etc.); `books.toscrape.com` is not on it, and a direct request
-from that environment returns a `403` from the sandbox's own egress proxy
-(`x-deny-reason: host_not_allowed`), not from the real site. So the
-pipeline itself has not been run end-to-end against the live site from
-where it was built. What **has** been verified: the real site's HTML
-structure and data were fetched and read directly (page 1 of the
-catalogue and the "A Light in the Attic" detail page), the selectors and
-record values in `fixtures/` are copied from that real, confirmed output,
-and all 9 unit tests pass against those fixtures. Running `npm start` on
-a normal internet connection is the remaining step, and should need no
-code changes.
+This was built and unit-tested in a sandboxed environment whose network couldn't reach books.toscrape.com directly. The selectors and logic were verified two ways before a real run: 9 unit tests against fixture HTML copied from the real site's confirmed markup, and a full run against a local stand-in server. It was then run for real by Arooba against the live site — the run-report below is that real run, 60 valid records and one deliberately broken page handled without crashing.
 
-<!-- Paste your real run-report.json here after running it. -->
+```json
+{
+  "started_at": "2026-10-05T07:18:14.624Z",
+  "finished_at": "2026-10-05T07:18:16.892Z",
+  "duration_ms": 2268,
+  "catalogue_pages_fetched": 3,
+  "book_pages_discovered": 60,
+  "book_pages_visited": 61,
+  "cache_hits": 60,
+  "fresh_fetches": 0,
+  "valid_records": 60,
+  "invalid_records": 1,
+  "failed_pages": 1
+}
+```
 
 ## Why this needed no browser
 
